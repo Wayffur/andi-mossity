@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Card Invite</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+            background-image: url('https://www.transparenttextures.com/patterns/hearts.png');
+            padding: 50px;
+            position: relative;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+        h1 {
+            color: red;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .yes {
+            background-color: red;
+            color: white;
+        }
+        .no {
+            background-color: gray;
+            color: white;
+            position: absolute;
+        }
+        .meme, .sylveon {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+        }
+        .message {
+            display: none;
+            font-size: 20px;
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Will you open Pokémon cards with me? ❤️</h1>
+        <div class="buttons">
+            <button class="yes" onclick="showSylveon()">Yes</button>
+            <button class="no" onclick="showMeme()" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
+    <img id="dogeMeme" class="meme" src="https://media1.tenor.com/m/YEqsyuOsPVwAAAAd/ja-raha-mai-koi-nahi-aone.gif" alt="Crying Doge Meme">
+    <img id="sylveonImage" class="sylveon" src="https://cdn.oneesports.gg/cdn-data/2025/01/Pokemon_TCG_PrismaticEvolutions_Special_Illustration_Rare_Sylveon_ex-1024x576.jpg" alt="Sylveon says 'I hope you're ready!'">
+    <p id="message" class="message">I hope you're ready for some pack openings, Andi Mossity.</p>
+    
+    <script>
+        let noClicked = false;
+
+        function showMeme() {
+            if (!noClicked) {
+                document.getElementById('dogeMeme').style.display = 'block';
+                noClicked = true;
+            }
+        }
+
+        function showSylveon() {
+            document.getElementById('sylveonImage').style.display = 'block';
+            document.getElementById('message').style.display = 'block';
+            document.getElementById('dogeMeme').style.display = 'none';
+        }
+
+        function moveButton() {
+            if (noClicked) {
+                const noButton = document.querySelector('.no');
+                const x = Math.random() * (window.innerWidth - 100);
+                const y = Math.random() * (window.innerHeight - 50);
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+            }
+        }
+    </script>
+</body>
+</html>
