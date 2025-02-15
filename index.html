@@ -76,9 +76,10 @@
     
     <script>
         let noClicked = false;
+        let yesClicked = false;
 
         function showMeme() {
-            if (!noClicked) {
+            if (!yesClicked && !noClicked) {
                 document.getElementById('dogeMeme').style.display = 'block';
                 noClicked = true;
             }
@@ -88,11 +89,12 @@
             document.getElementById('sylveonImage').style.display = 'block';
             document.getElementById('message').style.display = 'block';
             document.getElementById('dogeMeme').style.display = 'none';
+            yesClicked = true;
         }
 
         function moveButton() {
-            if (noClicked) {
-                const noButton = document.querySelector('.no');
+            const noButton = document.querySelector('.no');
+            if (noClicked || yesClicked) {
                 let x, y;
                 do {
                     x = Math.random() * (window.innerWidth - 100);
