@@ -19,6 +19,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             display: inline-block;
+            max-width: 90%;
         }
         h1 {
             color: red;
@@ -49,11 +50,13 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            max-width: 400px;
+            max-width: 90%;
+            width: 250px;
+            height: auto;
         }
         .message {
             display: none;
-            font-size: 20px;
+            font-size: 18px;
             color: red;
             margin-top: 10px;
         }
@@ -90,8 +93,12 @@
         function moveButton() {
             if (noClicked) {
                 const noButton = document.querySelector('.no');
-                const x = Math.random() * (window.innerWidth - 100);
-                const y = Math.random() * (window.innerHeight - 50);
+                const meme = document.getElementById('dogeMeme');
+                let x, y;
+                do {
+                    x = Math.random() * (window.innerWidth - 100);
+                    y = Math.random() * (window.innerHeight - 50);
+                } while (meme.style.display === 'block' && y > window.innerHeight / 2 - 100);
                 noButton.style.left = `${x}px`;
                 noButton.style.top = `${y}px`;
             }
