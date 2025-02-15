@@ -93,12 +93,11 @@
         function moveButton() {
             if (noClicked) {
                 const noButton = document.querySelector('.no');
-                const meme = document.getElementById('dogeMeme');
                 let x, y;
                 do {
                     x = Math.random() * (window.innerWidth - 100);
                     y = Math.random() * (window.innerHeight - 50);
-                } while (meme.style.display === 'block' && y > window.innerHeight / 2 - 100);
+                } while (y > window.innerHeight / 2 + 100); // Prevent overlapping with meme
                 noButton.style.left = `${x}px`;
                 noButton.style.top = `${y}px`;
             }
